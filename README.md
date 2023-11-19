@@ -38,3 +38,20 @@ Build a model that given a particular district's features can predict the median
 #### What is the performance measure?
 
 * Root mean square error (RMSE), which is a typical performance measure for regression problems (I am taking this as a given).
+
+### Retrieve, explore, and prepare the data
+
+#### Retrieval
+
+* Generally immediately, we should split data into test and training sets _before_ we begin to explore it deeply - this is to avoid introducing _data snooping bias_.
+* When separating data into test and training sets, make sure the method used is deterministic. This way, when new data is introduced or you run the code again, the same data is separated.
+* Random sampling of data is generally a bad idea - stratified sampling ensures test and training data sets are representative of the distributions in the actual data set (e.g. similar proportion of `median_income` for this data set).
+
+#### Exploration
+* Only explore the training set - leave the test set alone :-)
+* Visualizations around lat/long and population/income indicate that the closer to the ocean and the more densely populated an area, the more expensive housing is
+  * This indicates that clustering may be useful to detect the main clusters, and that a new feature (proximity to cluster center) may be of value.
+
+#### Preparing the data
+* Deal with missing values: remove the row, remove the feature, or set the value to the median
+  * Remember to save the median to apply to the test set later as well
