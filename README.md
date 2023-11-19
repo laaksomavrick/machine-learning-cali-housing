@@ -53,5 +53,14 @@ Build a model that given a particular district's features can predict the median
   * This indicates that clustering may be useful to detect the main clusters, and that a new feature (proximity to cluster center) may be of value.
 
 #### Preparing the data
-* Deal with missing values: remove the row, remove the feature, or set the value to the median
-  * Remember to save the median to apply to the test set later as well
+* `scikit-learn` API has three main interfaces:
+  * Estimators: estimates parameter(s) based on a dataset, `fit()`.
+  * Transformers: applies transformations on a dataset, `transform()`, `fit_transform()`.
+  * Predictors: make predictions given a dataset, `predict()`.
+* Author custom transformers to make data transformations repeatable and maintainable in your pipelines given feature development as a result of exploration.
+* Deal with missing values: remove the row, remove the feature, or set the value to the median.
+  * Remember to save the median to apply to the test set later as well.
+* Will want to apply _feature scaling_ to your data: ML algorithms don't perform when the input numerical attributes have very different scales.
+  * min-max scaling (normalization)
+  * standardization
+* Gaussian distribution is ideal versus heavy-tail, multimodal distributions
