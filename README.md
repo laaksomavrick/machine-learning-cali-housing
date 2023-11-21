@@ -64,3 +64,20 @@ Build a model that given a particular district's features can predict the median
   * min-max scaling (normalization)
   * standardization
 * Gaussian distribution is ideal versus heavy-tail, multimodal distributions
+
+### Select and train a model
+* If your model performance is not good enough, underfitting is the problem: either your features do not provide enough info OR your model is not powerful enough
+* If a model is too good, you've probably overfitted to your training data
+* This process appears generally to be experimentation: automated methods of tuning hyper parameters can help fine tune a set of promising models post evaluation
+* Combining multiple good-performing models can often perform better than an individual good-performing model
+
+### Deploying and operating your model
+* Best to serve a model via a service via `joblib` or some other abstraction. Similar to other artifacts, no fuss here.
+* Monitoring: can evaluate performance based on:
+  * downstream metrics (e.g. recommender system and recommended products sold)
+  * human monitoring of a sample
+  * splitting some new data as test data and calculating your error rate using that
+* Operation:
+  * Need to retrain model regularly if new data is regular
+  * Compare newly trained model to previous model on an updated test_set
+  * Backup models AND data sets, both are artifacts
